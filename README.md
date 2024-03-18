@@ -1,2 +1,0 @@
-# lossos
-Hand made website
