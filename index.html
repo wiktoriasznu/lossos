@@ -157,22 +157,30 @@
   </div>
 </body>
 <script>
-  // add an event listener to the form submission
-  document.getElementById("form").addEventListener("submit", function (e) {
-    e.preventDefault(); // stop the form from reloading the page
-    let email = document.getElementById("email").value;
+  document.getElementById('survey-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const nameField = document.getElementById('name');
+    const email = document.getElementById('email').value;
+    const emailPat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // basic regex to check email format
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // clear poprzedni komunikat
+    nameField.setCustomValidity('');
 
-    if (!emailPattern.test(email)) {
-      alert("please enter a valid email address");
+    // sprawdź czy name ma cyfry
+    if (/\d/.test(nameField.value)) {
+      nameField.setCustomValidity('pole name nie może zawierać cyfr');
+      nameField.reportValidity();
       return;
     }
 
-    // if valid, do something cool with it, like logging or sending to a server
-    console.log("submitted email:", email);
-    // you can add further processing here as needed
+    // sprawdź email
+    if (!emailPat.test(email)) {
+      alert('wpisz poprawny adres email zawierający @ i domenę');
+      return;
+    }
+
+    // jeśli ok, zatwierdź
+    this.submit();
   });
 </script>
 
