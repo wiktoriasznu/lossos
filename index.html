@@ -156,32 +156,6 @@
     <!--end footer-->
   </div>
 </body>
-<script>
-  document.getElementById('survey-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const nameField = document.getElementById('name');
-    const email = document.getElementById('email').value;
-    const emailPat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // clear poprzedni komunikat
-    nameField.setCustomValidity('');
-
-    // sprawdź czy name ma cyfry
-    if (/\d/.test(nameField.value)) {
-      nameField.setCustomValidity('pole name nie może zawierać cyfr');
-      nameField.reportValidity();
-      return;
-    }
-
-    // sprawdź email
-    if (!emailPat.test(email)) {
-      alert('wpisz poprawny adres email zawierający @ i domenę');
-      return;
-    }
-
-    // jeśli ok, zatwierdź
-    this.submit();
-  });
-</script>
 
 </html>
